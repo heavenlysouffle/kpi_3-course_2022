@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Panel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-use function PHPUnit\Framework\isEmpty;
-
 class PayController extends Controller {
 
-    public function pay_postValidator(Request $request) {
+    /**
+     * @param Request $request
+     * @return View|Factory|RedirectResponse|Application
+     */
+    public function pay_postValidator(Request $request): View|Factory|RedirectResponse|Application
+    {
         session_start();
         $card = $request -> input('card');
         $first_name = $request -> input('first_name');
