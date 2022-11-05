@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Panel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function cartAdd(Request $request) {
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    function cartAdd(Request $request): RedirectResponse
+    {
 
         session_start();
 
@@ -42,7 +48,12 @@ class CartController extends Controller
         }
     }
 
-    function removeCart(Request $request) {
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    function removeCart(Request $request): RedirectResponse
+    {
 
         session_start();
 
@@ -66,7 +77,12 @@ class CartController extends Controller
         return redirect()->route("{$request->pageName}", ['panels' => $catalog, 'cartClass' => 'cart-active']);
     }
 
-    function deleteCart(Request $request) {
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    function deleteCart(Request $request): RedirectResponse
+    {
 
         session_start();
         session_destroy();

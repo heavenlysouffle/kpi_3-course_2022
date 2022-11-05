@@ -1,7 +1,8 @@
 <?php
-
-if (!$errors) {
-    session_start();
+if isset($errors) {
+    if (!$errors) {
+        session_start();
+    }
 }
 $cartClass = $_GET['cartClass'] ?? 'cart'
 
