@@ -6,6 +6,12 @@ use App\Models\Panel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Cart Controller
+ *
+ * @package Controller
+ * @author  Panelki
+ */
 class CartController extends Controller
 {
     /**
