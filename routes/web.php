@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $panel = new Panel();
     $catalog = $panel->all();
-    return view('index', ['panels'=>$catalog]);
+    return view('index', ['panels' => $catalog]);
 })->name('index');
 
 Route::get('/about', function () {
     $panel = new Panel();
     $catalog = $panel->all();
-    return view('about_us', ['panels'=>$catalog]);
+    return view('about_us', ['panels' => $catalog]);
 })->name('about');
 
 Route::get('/events', function () {
@@ -23,13 +23,13 @@ Route::get('/events', function () {
     $catalog = $event->all()->sortByDesc('date');
     $panel = new Panel();
     $panels = $panel->all();
-    return view('events', ['events'=>$catalog], ['panels'=>$panels]);
+    return view('events', ['events' => $catalog], ['panels' => $panels]);
 })->name('events');
 
 Route::get('/pay', function () {
     $panel = new Panel();
     $catalog = $panel->all();
-    return view('form_pay', ['errors' => null ,'panels'=>$catalog]);
+    return view('form_pay', ['errors' => null, 'panels' => $catalog]);
 })->name('pay');
 
 Route::post('/pay/check', [PayController::class, 'pay_postValidator'])->name('pay.order');
@@ -37,7 +37,7 @@ Route::post('/pay/check', [PayController::class, 'pay_postValidator'])->name('pa
 Route::get('/issues', function () {
     $panel = new Panel();
     $catalog = $panel->all();
-    return view('issues', ['panels'=>$catalog]);
+    return view('issues', ['panels' => $catalog]);
 })->name('issues');
 
 Route::get('/issues/selected_issue/{id}', function ($id) {
@@ -48,7 +48,7 @@ Route::get('/issues/selected_issue/{id}', function ($id) {
             $panel = $item;
         }
     }
-    return view('selected_issue', ['panel'=> $panel], ['panels' => $panelObj]);
+    return view('selected_issue', ['panel' => $panel], ['panels' => $panelObj]);
 })->name("selected_issue");
 
 // Cart add route

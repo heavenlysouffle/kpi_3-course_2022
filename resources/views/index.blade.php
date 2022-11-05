@@ -22,7 +22,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -37,22 +37,26 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="index" name="pageName">
-                                                        <button>+ </button>
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="index" name="pageName">
                                                         <button>-</button>
                                                     </form>
@@ -81,7 +85,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -154,7 +160,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
             <div>
                 @if($message)
                     <div class="error-message">{{$message}}</div>
-                    <?php unset($_COOKIE['message']); setcookie('message', null, -1, '/'); ?>
+                        <?php
+                        unset($_COOKIE['message']); setcookie('message', null, -1, '/'); ?>
                 @endif
             </div>
         </div>
@@ -162,7 +169,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
             <div class="attention-text-box">
                 <h1 class="attention-heading">Про близьке, трохи журливе та з дитинства.</h1>
                 <img src="/img/svg/attention_text-box_logo.svg" class="attention-text_box-logo" alt="">
-                <p class="attention-text">— креативний проєкт, присвячений модерністській та постмодерністській архітектурі.</p>
+                <p class="attention-text">— креативний проєкт, присвячений модерністській та постмодерністській
+                    архітектурі.</p>
             </div>
         </div>
         <div id="attention-slider">
@@ -210,8 +218,12 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
             <div class="interesting-content">
                 <div class="interesting-block-house"></div>
                 <div class="interesting-text-box">
-                    <p>“Зате тепер зовсім інша річ. Людина потрапляє до незнайомого міста, але почувається у ньому, як удома.” — "Іронія долі, або З легкою парою!", 1976 р.</p>
-                    <p>Архітектура модернізму та постмодернізму зовсім не одноманітна, як вважають деякі: у “черговій” панельці обов'язково приховується душа, яка із радістю відкриється небайдужому у плитці, плануванні та акцентах. Наш проєкт існує саме для того, щоб розповісти про це людям у зручній для кожного формі.</p>
+                    <p>“Зате тепер зовсім інша річ. Людина потрапляє до незнайомого міста, але почувається у ньому, як
+                        удома.” — "Іронія долі, або З легкою парою!", 1976 р.</p>
+                    <p>Архітектура модернізму та постмодернізму зовсім не одноманітна, як вважають деякі: у “черговій”
+                        панельці обов'язково приховується душа, яка із радістю відкриється небайдужому у плитці,
+                        плануванні та акцентах. Наш проєкт існує саме для того, щоб розповісти про це людям у зручній
+                        для кожного формі.</p>
                 </div>
             </div>
         </div>
@@ -224,7 +236,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
             <div class="desire-content">
                 <h1 class="desire-heading">Панель за панеллю,</h1>
                 <p class="desire-text">
-                    сторінка за сторінкою, прогуляйтеся знайомо незнайомими вулицями разом із випусками нашого журналу від столиць до забутих людьми куточків.
+                    сторінка за сторінкою, прогуляйтеся знайомо незнайомими вулицями разом із випусками нашого журналу
+                    від столиць до забутих людьми куточків.
                 </p>
                 <div class="book_wrapper">
                     <button id="previous-button"></button>
@@ -287,9 +300,11 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                     <p class="action-text">
                         Скоріше приєднуйся до нашої спільноти захисників культурної архітектурної спадщини, онуче!
                     </p>
-                    <a href="/issues" class="action-button-link"><button id="action-button">
+                    <a href="/issues" class="action-button-link">
+                        <button id="action-button">
                             <p class="action-button-text">ГО!</p>
-                        </button></a>
+                        </button>
+                    </a>
                 </div>
                 <img src="/img/action_paper-picture.png" alt="">
             </div>

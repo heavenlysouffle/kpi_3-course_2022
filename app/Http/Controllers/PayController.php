@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Panel;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\DB;
  * @package Controller
  * @author  Panelki
  */
-class PayController extends Controller {
+class PayController extends Controller
+{
 
     /**
      * @param Request $request
@@ -27,9 +28,9 @@ class PayController extends Controller {
     public function pay_postValidator(Request $request): View|Factory|RedirectResponse|Application
     {
         session_start();
-        $card = $request -> input('card');
-        $first_name = $request -> input('first_name');
-        $second_name = $request -> input('second_name');
+        $card = $request->input('card');
+        $first_name = $request->input('first_name');
+        $second_name = $request->input('second_name');
         $card_arr = str_split($card);
         $first_name_arr = str_split($first_name);
         $second_name_arr = str_split($second_name);
@@ -65,11 +66,10 @@ class PayController extends Controller {
         }
 
         if (count($errors) === 0) {
-
             if ($orders->isEmpty()) {
                 $id_order = 1;
             } else {
-                $last_order = $orders[count($orders)-1];
+                $last_order = $orders[count($orders) - 1];
                 $id_order = $last_order->order_id;
             }
 
@@ -95,9 +95,8 @@ class PayController extends Controller {
             setcookie("message", "Ваше замовлення сплачено успішно!", 0, '/');
             session_destroy();
             return redirect()->route('index');
-
         } else {
-            return view('form_pay', ['errors' => $errors, 'panels'=>$panels] );
+            return view('form_pay', ['errors' => $errors, 'panels' => $panels]);
         }
     }
 }
