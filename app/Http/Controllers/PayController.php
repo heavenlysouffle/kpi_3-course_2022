@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Pay Controller
+ *
+ * @package Controller
+ * @author  Panelki
+ */
 class PayController extends Controller {
 
     /**
