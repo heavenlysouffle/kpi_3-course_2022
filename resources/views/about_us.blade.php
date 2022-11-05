@@ -21,7 +21,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -36,22 +36,26 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="about" name="pageName">
-                                                        <button>+ </button>
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="about" name="pageName">
                                                         <button>-</button>
                                                     </form>
@@ -80,7 +84,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -157,12 +163,16 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                         <h2 class="about-us-title">ZUPAGRAFIKA</h2>
                         <p>
                             Ідейним натхненником була студія графічного дизайну
-                            та їй належить більшість використаних на цьому сайті матеріалів, зображення та тексти включно.
-                            Просимо ознайомитися із вражаючею творчістю та роботами її команди й авторськими правами та умовами нашого сайту та Zupagrafika.
+                            та їй належить більшість використаних на цьому сайті матеріалів, зображення та тексти
+                            включно.
+                            Просимо ознайомитися із вражаючею творчістю та роботами її команди й авторськими правами та
+                            умовами нашого сайту та Zupagrafika.
                         </p>
                         <p>
-                            Ми дуже вдячні Zupagrafika за їх працю, що продовжують нас радувати, й ідеї, які вони приносять у світ.
-                            Їх творчість знаходить значний відгук у нашому серці та світогляді, саме цьому для навчальної мети створення Panel`ki
+                            Ми дуже вдячні Zupagrafika за їх працю, що продовжують нас радувати, й ідеї, які вони
+                            приносять у світ.
+                            Їх творчість знаходить значний відгук у нашому серці та світогляді, саме цьому для
+                            навчальної мети створення Panel`ki
                             ми хотіли використати ідеї Zupagrafika.
                         </p>
                     </div>
@@ -178,13 +188,16 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                         <h2 class="about-us-title" style="margin-bottom: 12px;">PANEL`KI</h2>
                         <h3 class="about-us-note">Про близьке, трохи журливе та з дитинства.</h3>
                         <p>
-                            Продукт створювався з орієнтацію на проєкт, який би популяризував модерністську, постмодерністську
-                            архітектуру та збирав навколо себе людей, що вона захоплює. То це не тільки про архітектуру, а також про
+                            Продукт створювався з орієнтацію на проєкт, який би популяризував модерністську,
+                            постмодерністську
+                            архітектуру та збирав навколо себе людей, що вона захоплює. То це не тільки про архітектуру,
+                            а також про
                             тепле та комфортне коммьюніті людей, які цінують що залишилося нам від минулих поколінь, але
                             вміють інтерпретувати колишнє на користь майбутнього.
                         </p>
                         <p>
-                            Образний проєкт випускає електронні журнали, робить власні фото-репортажі та дослідження окремих
+                            Образний проєкт випускає електронні журнали, робить власні фото-репортажі та дослідження
+                            окремих
                             архітектурних об'єктів й організує зустрічі для його коммьюніті.
                         </p>
                     </div>

@@ -21,7 +21,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -36,22 +36,26 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="events" name="pageName">
-                                                        <button>+ </button>
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="events" name="pageName">
                                                         <button>-</button>
                                                     </form>
@@ -80,7 +84,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -158,7 +164,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[0]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[0]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[0]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -177,7 +184,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[1]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[1]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[1]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -189,7 +197,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[2]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[2]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[2]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -198,7 +207,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[3]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[3]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[3]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -216,7 +226,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[0]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[0]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[0]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -234,7 +245,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[1]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[1]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[1]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -247,7 +259,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[2]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[2]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[2]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -256,7 +269,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[3]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[3]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[3]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -274,7 +288,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[0]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[0]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[0]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -289,7 +304,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[1]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[1]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[1]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -305,7 +321,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[3]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[3]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[3]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -313,7 +330,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[2]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[2]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[2]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -331,7 +349,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[0]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[0]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[0]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -343,7 +362,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[1]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[1]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[1]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -355,7 +375,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <div class="window">
                                 <h1 class="events-city">
                                     {{$events[3]->city}}
-                                    <br><?php echo str_replace('2022-', '', $events[3]->date)?>
+                                    <br><?php
+                                            echo str_replace('2022-', '', $events[3]->date) ?>
                                 </h1>
                             </div>
                         </div>
@@ -366,7 +387,8 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                         <div class="window">
                             <h1 class="events-city">
                                 {{$events[2]->city}}
-                                <br><?php echo str_replace('2022-', '', $events[2]->date)?>
+                                <br><?php
+                                        echo str_replace('2022-', '', $events[2]->date) ?>
                             </h1>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 // Burger handler
-(function (){
+(function () {
     const burgerItem = document.querySelector('.burger');
     const menu = document.querySelector('.header-nav-bar');
     const menuCloseItem = document.querySelector('.header-nav-close');
@@ -43,8 +43,8 @@ paper1.classList.add("flipped");
 paper1.style.zIndex = "1";
 
 function goNextPage() {
-    if(currentLocation < maxLocation) {
-        switch(currentLocation) {
+    if (currentLocation < maxLocation) {
+        switch (currentLocation) {
             case 1:
                 paper2.classList.add("flipped");
                 paper2.style.zIndex = "5";
@@ -65,8 +65,8 @@ function goNextPage() {
 }
 
 function goPrevPage() {
-    if(currentLocation > 1) {
-        switch(currentLocation) {
+    if (currentLocation > 1) {
+        switch (currentLocation) {
             case 1:
                 paper1.classList.remove("flipped");
                 paper1.style.zIndex = "7";

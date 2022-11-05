@@ -1,4 +1,5 @@
 <?php
+
 if isset($errors) {
     if (!$errors) {
         session_start();
@@ -24,7 +25,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -39,22 +40,26 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="pay" name="pageName">
-                                                        <button>+ </button>
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="pay" name="pageName">
                                                         <button>-</button>
                                                     </form>
@@ -83,7 +88,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -156,39 +163,42 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         <div class="row row-2"></div>
         <div class="form_content">
             <div class="form_pay">
-                <form action="{{ route('pay.order') }}" method="POST" option="#credit" style="display: flex; justify-content: center; flex-wrap: wrap">
+                <form action="{{ route('pay.order') }}" method="POST" option="#credit"
+                      style="display: flex; justify-content: center; flex-wrap: wrap">
                     @csrf
                     <h2>Сплатити замовлення на суму {{ $_SESSION['cart_cost'] }}₴:</h2>
                     <div class="form_box">
                         <div class="form-element">
-                            <input type="text" name="first_name" placeholder="Ім'я..." />
+                            <input type="text" name="first_name" placeholder="Ім'я..."/>
                         </div>
                         <div class="form-element">
-                            <input type="text" name="second_name" placeholder="Фамілія..." />
+                            <input type="text" name="second_name" placeholder="Фамілія..."/>
                         </div>
                         <div class="form-element" style="width: 100%">
-                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" name="phone" placeholder="096-777-77-77" />
+                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" name="phone"
+                                   placeholder="096-777-77-77"/>
                             <span class="validity"></span>
                         </div>
                         <div class="form-element" style="width: 100%; padding-left: 25px;">
                             <img src="/img/card_icon.png" alt="">
-                            <input type="number" name="card" placeholder="7777 7777 7777 7777" />
+                            <input type="number" name="card" placeholder="7777 7777 7777 7777"/>
                             <span class="validity"></span>
                         </div>
                         <div class="form-element" style="padding-left: 25px;">
                             <img src="/img/date_icon.png" alt="">
-                            <input type="text" pattern="[0-9]{2}/[2-3]{1}[0-9]{1}" name="date" placeholder="06 / 24" />
+                            <input type="text" pattern="[0-9]{2}/[2-3]{1}[0-9]{1}" name="date" placeholder="06 / 24"/>
                             <span class="validity"></span>
                         </div>
                         <div class="form-element" style="padding-left: 25px;">
                             <img src="/img/cvc_icon.png" alt="">
-                            <input type="password" pattern="[0-9]{3}" name="cvc" placeholder="CVC" />
+                            <input type="password" pattern="[0-9]{3}" name="cvc" placeholder="CVC"/>
                             <span class="validity"></span>
                         </div>
                     </div>
                     <div class="checkbox-requirements">
                         <input class="checkbox_btn" type="checkbox">
-                        <h6>Я погоджуюсь з умовами політики конфіденційності і дозволяю обробляти мої персональні дані.</h6>
+                        <h6>Я погоджуюсь з умовами політики конфіденційності і дозволяю обробляти мої персональні
+                            дані.</h6>
                     </div>
                     <button class="confirm-button" type="submit">Підтвердити</button>
                     <div class="breakpoint" style="width: 100%; height: 0;"></div>

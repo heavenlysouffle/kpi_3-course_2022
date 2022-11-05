@@ -20,7 +20,6 @@ class CartController extends Controller
      */
     function cartAdd(Request $request): RedirectResponse
     {
-
         session_start();
 
         $panel = new Panel();
@@ -31,24 +30,36 @@ class CartController extends Controller
             $_SESSION['order_array'][] = ['name' => $request->name, 'quantity' => 1];
             $_SESSION['cart_cost'] = $request->price;
             if (str_starts_with($request->pageName, 'selected_issues')) {
-                return redirect()->route("selected_issue", ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]);
+                return redirect()->route(
+                    "selected_issue",
+                    ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]
+                );
             }
             return redirect()->route("{$request->pageName}", ['panels' => $catalog, 'cartClass' => 'cart-active']);
         } else {
             foreach ($_SESSION['order_array'] as $key => $item_arr) {
-                if($item_arr['name'] == $request->name) {
+                if ($item_arr['name'] == $request->name) {
                     $_SESSION['order_array'][$key]['quantity'] = $item_arr['quantity'] + 1;
                     $_SESSION['cart_cost'] += $request->price;
                     if (str_starts_with($request->pageName, 'selected_issues')) {
-                        return redirect()->route("selected_issue", ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]);
+                        return redirect()->route(
+                            "selected_issue",
+                            ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]
+                        );
                     }
-                    return redirect()->route("{$request->pageName}", ['panels' => $catalog, 'cartClass' => 'cart-active']);
+                    return redirect()->route(
+                        "{$request->pageName}",
+                        ['panels' => $catalog, 'cartClass' => 'cart-active']
+                    );
                 }
             }
             $_SESSION['order_array'][] = ['name' => $request->name, 'quantity' => 1];
             $_SESSION['cart_cost'] += $request->price;
             if (str_starts_with($request->pageName, 'selected_issues')) {
-                return redirect()->route("selected_issue", ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]);
+                return redirect()->route(
+                    "selected_issue",
+                    ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]
+                );
             }
             return redirect()->route('issues', ['panels' => $catalog, 'cartClass' => 'cart-active']);
         }
@@ -60,14 +71,13 @@ class CartController extends Controller
      */
     function removeCart(Request $request): RedirectResponse
     {
-
         session_start();
 
         $panel = new Panel();
         $catalog = $panel->all();
 
         foreach ($_SESSION['order_array'] as $key => $item_arr) {
-            if($item_arr['name'] == $request->name) {
+            if ($item_arr['name'] == $request->name) {
                 if ($item_arr['quantity'] > 1) {
                     $_SESSION['order_array'][$key]['quantity'] = $item_arr['quantity'] - 1;
                     $_SESSION['cart_cost'] -= $request->price;
@@ -78,7 +88,10 @@ class CartController extends Controller
             }
         }
         if (str_starts_with($request->pageName, 'selected_issues')) {
-            return redirect()->route("selected_issue", ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]);
+            return redirect()->route(
+                "selected_issue",
+                ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]
+            );
         }
         return redirect()->route("{$request->pageName}", ['panels' => $catalog, 'cartClass' => 'cart-active']);
     }
@@ -89,7 +102,6 @@ class CartController extends Controller
      */
     function deleteCart(Request $request): RedirectResponse
     {
-
         session_start();
         session_destroy();
 
@@ -97,9 +109,11 @@ class CartController extends Controller
         $catalog = $panel->all();
 
         if (str_starts_with($request->pageName, 'selected_issues')) {
-            return redirect()->route("selected_issue", ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]);
+            return redirect()->route(
+                "selected_issue",
+                ['id' => substr($request->pageName, strpos($request->pageName, "/") + 1)]
+            );
         }
         return redirect()->route("{$request->pageName}", ['panels' => $catalog]);
-
     }
 }

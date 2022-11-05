@@ -21,7 +21,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -36,23 +36,29 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
-                                                        <input type="hidden" value="selected_issues/{{$panel->name}}" name="pageName">
-                                                        <button>+ </button>
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
+                                                        <input type="hidden" value="selected_issues/{{$panel->name}}"
+                                                               name="pageName">
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
-                                                        <input type="hidden" value="selected_issues/{{$panel->name}}" name="pageName">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
+                                                        <input type="hidden" value="selected_issues/{{$panel->name}}"
+                                                               name="pageName">
                                                         <button>-</button>
                                                     </form>
                                                 </li>
@@ -80,7 +86,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -189,11 +197,15 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                 </div>
                 <h1 class="issue-title">Panelki</h1>
                 <p class="issue-text">
-                    Panelki дозволяє читачам зібрати панельний дім-блок й одночасно дізнатися про збірні будівельні системи та їх історію, які сьогодні ми називаємо “панельками”.
+                    Panelki дозволяє читачам зібрати панельний дім-блок й одночасно дізнатися про збірні будівельні
+                    системи та їх історію, які сьогодні ми називаємо “панельками”.
 
-                    <br>Першу частину книги відкриває вступ до масового житла в колишньому Радянському Союзі та його мешканців, ілюстрований фотографіями та пропагандистськими плакатами.
-                    Друга частина містить 164 картонні панелі для видавлювання та створення 3D-блоку висотою 27 см із простими інструкціями. На панелях представлені детальні ілюстрації,
-                    що відтворюють фасади післявоєнних модерністських житлових будинків, у яких донині живуть мільйони міських жителів, демонструючи деякі елементи, додані орендарями
+                    <br>Першу частину книги відкриває вступ до масового житла в колишньому Радянському Союзі та його
+                    мешканців, ілюстрований фотографіями та пропагандистськими плакатами.
+                    Друга частина містить 164 картонні панелі для видавлювання та створення 3D-блоку висотою 27 см із
+                    простими інструкціями. На панелях представлені детальні ілюстрації,
+                    що відтворюють фасади післявоєнних модерністських житлових будинків, у яких донині живуть мільйони
+                    міських жителів, демонструючи деякі елементи, додані орендарями
                     пізніше, зокрема супутникові антени чи графіті.
                 </p>
                 <img src="/img/selected-issue_1.jpg" alt="" class="issue-details-pic">

@@ -22,7 +22,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
 <div class={{ $cartClass}} id="cart">
     <button onclick="myFunction()" class="cart-btn"></button>
     <div class="cart_bg">
-        <div class="cart-title"><h3 >Кошик</h3></div>
+        <div class="cart-title"><h3>Кошик</h3></div>
         <ul>
             @foreach($panels as $panelItem)
                 @if(isset($_SESSION['order_array']) && $_SESSION['order_array'])
@@ -37,22 +37,26 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                         <div class="cart-counter">
                                             <ul>
                                                 <li>
-                                                    <form action="{{ route('cart.add') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.add') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="issues" name="pageName">
-                                                        <button>+ </button>
+                                                        <button>+</button>
                                                     </form>
                                                 </li>
                                                 <li>
                                                     &nbsp;&nbsp;{{ $item['quantity'] }}
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('cart.remove') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('cart.remove') }}" method="POST"
+                                                          enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" value="{{ $panelItem->name }}" name="name">
-                                                        <input type="hidden" value="{{ $panelItem->price }}" name="price">
+                                                        <input type="hidden" value="{{ $panelItem->price }}"
+                                                               name="price">
                                                         <input type="hidden" value="issues" name="pageName">
                                                         <button>-</button>
                                                     </form>
@@ -81,7 +85,9 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
         @else
             <div class="fill-cart">
                 <p>Упс! Тут поки нічого :(</p>
-                <a href="/issues"><button class="clear-cart">Заповнити кошик</button></a>
+                <a href="/issues">
+                    <button class="clear-cart">Заповнити кошик</button>
+                </a>
             </div>
         @endif
         <div class="proceed">
@@ -164,7 +170,10 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                                                     <img src="./img/{{$panel->img_name}}" alt="">
                                                 </div>
                                             </a>
-                                            <div class="price">—&nbsp<div class="old-price">{{$panel->old_price}}</div>&nbsp{{$panel->price}} ₴</div>
+                                            <div class="price">—&nbsp
+                                                <div class="old-price">{{$panel->old_price}}</div>
+                                                &nbsp{{$panel->price}} ₴
+                                            </div>
                                         </div>
                                     </div>
                                 @else
