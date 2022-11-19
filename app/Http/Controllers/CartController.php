@@ -82,8 +82,18 @@ class CartController extends Controller
                     $_SESSION['order_array'][$key]['quantity'] = $item_arr['quantity'] - 1;
                     $_SESSION['cart_cost'] -= $request->price;
                 } else {
+                    $cart_cost = $_SESSION['cart_cost'] - $request->price;
                     unset($_SESSION['order_array'][$key]);
-                    $_SESSION['cart_cost'] -= $request->price;
+                    $order_array = $_SESSION['order_array'];
+                    session_destroy();
+                    session_start();
+                    if ($cart_cost) {
+                        $_SESSION['cart_cost'] = $cart_cost;
+                    }
+                    if ($order_array) {
+                        $_SESSION['order_array'] = $order_array;
+                    }
+
                 }
             }
         }
