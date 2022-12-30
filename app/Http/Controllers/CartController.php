@@ -28,7 +28,7 @@ class CartController extends Controller
         if (!isset($_SESSION['order_array'])) {
             $_SESSION['order_array'] = [];
             $_SESSION['order_array'][] = ['name' => $request->name, 'quantity' => 1];
-            $_SESSION['cart_cost'] = $request->price;
+            $_SESSION['cart_cost'] = $request->price ?? 0;
             if (str_starts_with($request->pageName, 'selected_issues')) {
                 return redirect()->route(
                     "selected_issue",

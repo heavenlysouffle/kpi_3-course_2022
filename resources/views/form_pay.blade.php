@@ -1,6 +1,6 @@
 <?php
 
-if isset($errors) {
+if (isset($errors)) {
     if (!$errors) {
         session_start();
     }

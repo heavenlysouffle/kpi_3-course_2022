@@ -62,3 +62,7 @@ Route::post('/issues/remove', [cartController::class, 'removeCart'])->name('cart
 // Cart delete route
 
 Route::post('/issues/delete', [cartController::class, 'deleteCart'])->name('cart.delete');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
