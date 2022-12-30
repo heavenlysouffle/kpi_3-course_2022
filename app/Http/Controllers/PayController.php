@@ -27,7 +27,9 @@ class PayController extends Controller
      */
     public function pay_postValidator(Request $request): View|Factory|RedirectResponse|Application
     {
-        session_start();
+        if (!session_status()) {
+            session_start();
+        }
         $card = $request->input('card');
         $first_name = $request->input('first_name');
         $second_name = $request->input('second_name');
@@ -73,7 +75,7 @@ class PayController extends Controller
                 $id_order = $last_order->order_id;
             }
 
-            foreach ($_SESSION['order_array'] as $item_arr) {
+            foreach ($_SESSION['order_array'] ?? [] as $item_arr) {
                 foreach ($panels as $panel) {
                     if ($panel->name == $item_arr['name']) {
                         DB::table('orders')->insert([
