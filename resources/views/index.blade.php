@@ -1,7 +1,9 @@
 <?php
 
 $message = $_COOKIE['message'] ?? null;
-session_start();
+if(session_status() !== 2) {
+    session_start();
+}
 $cartClass = $_GET['cartClass'] ?? 'cart'
 
 ?>
