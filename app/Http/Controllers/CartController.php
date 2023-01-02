@@ -20,7 +20,9 @@ class CartController extends Controller
      */
     function cartAdd(Request $request): RedirectResponse
     {
-        session_start();
+        if (session_status() !== 2) {
+            session_start();
+        }
 
         $panel = new Panel();
         $catalog = $panel->all();
@@ -71,7 +73,9 @@ class CartController extends Controller
      */
     function removeCart(Request $request): RedirectResponse
     {
-        session_start();
+        if (session_status() !== 2) {
+            session_start();
+        }
 
         $panel = new Panel();
         $catalog = $panel->all();
@@ -112,7 +116,9 @@ class CartController extends Controller
      */
     function deleteCart(Request $request): RedirectResponse
     {
-        session_start();
+        if (session_status() !== 2) {
+            session_start();
+        }
         session_destroy();
 
         $panel = new Panel();

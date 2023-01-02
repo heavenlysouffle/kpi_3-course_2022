@@ -3,6 +3,11 @@
 if(session_status() !== 2) {
     session_start();
 }
+
+if ($panel === NULL) {
+    http_response_code(404);
+    die();
+}
 $cartClass = $_GET['cartClass'] ?? 'cart'
 
 ?>

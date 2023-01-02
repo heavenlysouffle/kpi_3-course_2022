@@ -164,7 +164,11 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                 <form action="{{ route('pay.order') }}" method="POST" option="#credit"
                       style="display: flex; justify-content: center; flex-wrap: wrap">
                     @csrf
-                    <h2>Сплатити замовлення на суму {{ $_SESSION['cart_cost'] }}₴:</h2>
+                    <?php if(isset($_SESSION['cart_cost'])): ?>
+                    <h2>Сплатити замовлення на суму <?php echo e($_SESSION['cart_cost']) ?? 0; ?>₴:</h2>
+                    <?php else: ?>
+                    <h2>Сплатити замовлення на суму 0₴:</h2>
+                    <?php endif; ?>
                     <div class="form_box">
                         <div class="form-element">
                             <input type="text" name="first_name" placeholder="Ім'я..."/>

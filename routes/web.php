@@ -48,6 +48,7 @@ Route::get('/issues/selected_issue/{id}', function ($id) {
             $panel = $item;
         }
     }
+    $panel = $panel ?? NULL;
     return view('selected_issue', ['panel' => $panel], ['panels' => $panelObj]);
 })->name("selected_issue");
 
