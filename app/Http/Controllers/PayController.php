@@ -27,7 +27,7 @@ class PayController extends Controller
      */
     public function pay_postValidator(Request $request): View|Factory|RedirectResponse|Application
     {
-        if (!session_status() !== 2) {
+        if (session_status() != 2) {
             session_start();
         }
         $card = $request->input('card');
