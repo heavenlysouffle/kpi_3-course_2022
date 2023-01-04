@@ -9,7 +9,6 @@ if ($panel === NULL) {
     die();
 }
 $cartClass = $_GET['cartClass'] ?? 'cart'
-
 ?>
 
     <!DOCTYPE html>

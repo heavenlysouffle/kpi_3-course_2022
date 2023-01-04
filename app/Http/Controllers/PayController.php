@@ -82,7 +82,7 @@ class PayController extends Controller
                             [
                                 'order_id' => $id_order,
                                 'panel_id' => $item_arr['name'],
-                                'price' => $panel->price,
+                                'price' => $panel->price*$item_arr['quantity'],
                                 'first_name' => $first_name,
                                 'second_name' => $second_name,
                                 'phone' => $phone,

@@ -67,3 +67,7 @@ Route::post('/issues/delete', [cartController::class, 'deleteCart'])->name('cart
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/token', function () {
+    return csrf_token();
+});

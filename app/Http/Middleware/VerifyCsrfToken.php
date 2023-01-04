@@ -15,7 +15,8 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'auth/facebook/callback',
-        'auth/google/callback',
+        '/issues/delete',
+        '/issues/add',
+        '/issues/remove',
     ];
 }
