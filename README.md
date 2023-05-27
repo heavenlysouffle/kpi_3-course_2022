@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## For project ##
+
+Need: composer + xampp
+
+Cloning and running project from github:
+1.Run git clone <my-cool-project> (inside xampp/htdocs)
+2.Run composer install
+3.Run cp .env.example .env
+4.Run php artisan key:generate
+5.Run php artisan migrate
+6.Run php artisan serve
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and
