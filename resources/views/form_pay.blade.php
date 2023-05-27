@@ -174,7 +174,7 @@ $cartClass = $_GET['cartClass'] ?? 'cart'
                             <input type="text" name="first_name" placeholder="Ім'я..."/>
                         </div>
                         <div class="form-element">
-                            <input type="text" name="second_name" placeholder="Фамілія..."/>
+                            <input type="text" name="second_name" placeholder="Прізвище..."/>
                         </div>
                         <div class="form-element" style="width: 100%">
                             <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" name="phone"
